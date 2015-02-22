@@ -1,9 +1,15 @@
+#!/usr/bin/python
+
 __author__ = 'lovro'
 
-import os
+import os.path
+import sys
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
+
 import shutil
-from server.private.helpers.hash_checker import HashChecker as Hash
-from server.private.MongoDB.db_client import MongoDB
+from helpers.hash_checker import HashChecker as Hash
+from MongoDB.db_client import MongoDB
+
 
 '''
  pseudo alg
@@ -34,13 +40,11 @@ class Accounts:
         self.accounts_saved = os.path.join(os.getcwd(), self.accounts_saved)
 
 
-        # todo path for accounts from server
+        # PLACE HERE PATH TO ACCOUNTS FILE ON SERVER
         self.accounts_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data",
                                          self.accounts_new)
 
-
     def check_hash(self):
-
         """
         Method that calls hash comparison of two files to determine if there is changes
         :rtype : Boolean
@@ -54,13 +58,11 @@ class Accounts:
         else:
             print "Sorry specified file doesn't exist"
 
-
     def get_accounts_from_server(self):
         """
         This method should get location of original servers data about user accounts
         """
         # Todo this method to work on server
-
 
     def check_file_exists(self, file_path):
         """
@@ -84,7 +86,8 @@ class Accounts:
     def parse_user(self, line):
 
         """
-        Method that parses accounts.txt file and if it's new user then we save it to database and append to saved_users.txt
+        Method that parses accounts.txt file and if it's new user then we save it to database and append to
+        saved_users.txt
         :rtype : object
         """
 
@@ -146,7 +149,6 @@ class Accounts:
             return True
         except:
             return False
-
 
     def save_user_text(self, user):
         """

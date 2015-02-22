@@ -1,9 +1,17 @@
+#!/usr/bin/python
+
 __author__ = 'lovro'
 
 import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
+
 import shutil
-from server.private.helpers.hash_checker import HashChecker as Hash
-from server.private.MongoDB.db_client import MongoDB
+
+from helpers.hash_checker import HashChecker as Hash
+from MongoDB.db_client import MongoDB
+
 
 '''
  pseudo alg
@@ -34,7 +42,7 @@ class Characters:
         self.chars_saved = os.path.join(os.getcwd(), self.chars_saved)
 
 
-        # todo path for accounts from server
+        # THIS PATH WILL BE REPLACED WITH ORIGINAL CHARACHTERS FILE
         self.chars_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.chars_new)
 
 
@@ -83,7 +91,8 @@ class Characters:
     def parse_character(self, line):
 
         """
-        Method that parses accounts.txt file and if it's new user then we save it to database and append to saved_users.txt
+        Method that parses accounts.txt file and if it's new user then we save it to database and append to
+        saved_users.txt
         :rtype : object
         """
 
@@ -95,7 +104,6 @@ class Characters:
 
         if not self.find_character(user[2]):
             self.save_character(user[0], user[1], user[2], user[18])
-
 
     def find_character(self, user):
         """
@@ -114,7 +122,6 @@ class Characters:
     def save_character(self, char_id, user_id, char_name, quest_info):
         """
         Method that handles saving new users data to textfile and database
-        :param user:
         :param user_id:
         """
         user_id = self.parse_user_id(user_id)
@@ -132,7 +139,6 @@ class Characters:
         return user_id.split(",")[0]
 
     def save_character_database(self, user, user_id, char_name, quest_info):
-        # Todo make this data save to database
         """
         Method that provides saving new users data to database
         :param user:

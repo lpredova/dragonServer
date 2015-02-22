@@ -1,11 +1,16 @@
-from macpath import split
+#!/usr/bin/python
 
 __author__ = 'lovro'
 
 import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
+
 import shutil
-from server.private.helpers.hash_checker import HashChecker as Hash
-from server.private.MongoDB.db_client import MongoDB
+from helpers.hash_checker import HashChecker as Hash
+from MongoDB.db_client import MongoDB
+
 
 '''
  pseudo alg
@@ -35,13 +40,10 @@ class Party:
         self.party_text_file = os.path.join(os.getcwd(), self.party_text_file)
         self.party_saved = os.path.join(os.getcwd(), self.party_saved)
 
-
-        # todo path for accounts from server
+        # PLACE HERE PATH TO PARTIES FILE ON SERVER
         self.party_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.party_new)
 
-
     def check_hash(self):
-
         """
         Method that calls hash comparison of two files to determine if there is changes
         :rtype : Boolean
@@ -84,7 +86,8 @@ class Party:
 
     def parse_party(self, line):
         """
-        Method that parses accounts.txt file and if it's new user then we save it to database and append to saved_users.txt
+        Method that parses accounts.txt file and if it's new user then we save it to database and append
+        to saved_users.txt
         :rtype : object
         """
 
@@ -101,7 +104,6 @@ class Party:
         """
         searchfile = open(self.party_text_file, "r")
         for line in searchfile:
-            # print "trazim " + party[1] + self.write_party_members(party) + " u " + line
             if party[1] + self.write_party_members(party) in line:
                 # He found the party, now we need to get members names
                 searchfile.close()
@@ -113,8 +115,6 @@ class Party:
     def save_party(self, party):
         """
         Method that handles saving new parties data to textfile and database
-        :param user:
-        :param user_id:
         """
         if self.save_party_database(party):
             self.save_party_text(party)
