@@ -41,7 +41,10 @@ class Party:
         self.party_saved = os.path.join(os.getcwd(), self.party_saved)
 
         # PLACE HERE PATH TO PARTIES FILE ON SERVER
-        self.party_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.party_new)
+        #self.party_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.party_new)
+
+        #PATH ON SERVER /root/tmwAthena/tmwa-server-data/world/save
+        self.party_new = os.path.join("/root/tmwAthena/tmwa-server-data/world/save", self.party_new)
 
     def check_hash(self):
         """

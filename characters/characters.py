@@ -43,7 +43,10 @@ class Characters:
 
 
         # THIS PATH WILL BE REPLACED WITH ORIGINAL CHARACHTERS FILE
-        self.chars_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.chars_new)
+        #self.chars_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.chars_new)
+
+        #PATH ON SERVER /root/tmwAthena/tmwa-server-data/world/save
+        self.chars_new = os.path.join("/root/tmwAthena/tmwa-server-data/world/save", self.chars_new)
 
 
     def check_hash(self):

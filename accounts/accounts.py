@@ -41,8 +41,10 @@ class Accounts:
 
 
         # PLACE HERE PATH TO ACCOUNTS FILE ON SERVER
-        self.accounts_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data",
-                                         self.accounts_new)
+        #self.accounts_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.accounts_new)
+        #PATH ON SERVER /root/tmwAthena/tmwa-server-data/login/save
+        self.accounts_new = os.path.join("/root/tmwAthena/tmwa-server-data/login/save", self.accounts_new)
+
 
     def check_hash(self):
         """
