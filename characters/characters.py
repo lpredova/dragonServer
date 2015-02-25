@@ -38,6 +38,9 @@ class Characters:
         Constructor in which we set default paths for local athena.txt and char.txt and servers char txt file
 
         """
+        os.chdir("/root/dragon_foi/characters")
+
+
         self.chars_text_file = os.path.join(os.getcwd(), self.chars_text_file)
         self.chars_saved = os.path.join(os.getcwd(), self.chars_saved)
 

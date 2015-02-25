@@ -36,6 +36,9 @@ class Accounts:
         Constructor in which we set default paths for local saved_users.txt and accounts.txt and servers txt file
 
         """
+        #in order for cwd to work from anyshere we must do this
+        os.chdir("/root/dragon_foi/accounts")
+
         self.accounts_text_file = os.path.join(os.getcwd(), self.accounts_text_file)
         self.accounts_saved = os.path.join(os.getcwd(), self.accounts_saved)
 

@@ -37,6 +37,8 @@ class Party:
         Constructor in which we set default paths for local athena.txt and char.txt and servers char txt file
 
         """
+        os.chdir("/root/dragon_foi/parties")
+
         self.party_text_file = os.path.join(os.getcwd(), self.party_text_file)
         self.party_saved = os.path.join(os.getcwd(), self.party_saved)
 
