@@ -63,13 +63,6 @@ class Party:
             print "Sorry specified file doesn't exist"
 
 
-    def get_parties_from_server(self):
-        """
-        This method should get location of original servers data about user accounts
-        """
-        # Todo this method to work on server
-
-
     def check_file_exists(self, file_path):
         """
         Method that checks if specific file exists
@@ -160,6 +153,15 @@ class Party:
             try:
                 mongo = MongoDB()
                 db = mongo.get_manaworld_database()
+
+                print admin
+
+                if admin == 1:
+                    party_entity = {
+                        "party_name": party[1],
+                        "admin": char}
+
+                    db.ManaWorldParty.insert(party_entity)
 
                 db.ManaWorldDB.update(
                     {"charachters.char_name": char},
