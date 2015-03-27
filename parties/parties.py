@@ -161,6 +161,7 @@ class Party:
                         "admin": char}
 
                     db.ManaWorldParty.insert(party_entity)
+                    print "Added to party DB"
 
                 db.ManaWorldDB.update(
                     {"charachters.char_name": char},
