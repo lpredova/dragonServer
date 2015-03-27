@@ -43,7 +43,7 @@ class Party:
         self.party_saved = os.path.join(os.getcwd(), self.party_saved)
 
         # PATH ON SERVER /usr/games/tmw/tmwa-server-data/world/save/party.txt
-        self.party_new = os.path.join("/root/tmwAthena/tmwa-server-data/world/save", self.party_new)
+        self.party_new = os.path.join("/usr/games/tmw/tmwa-server-data/world/save", self.party_new)
 
     def check_hash(self):
         """
@@ -146,6 +146,8 @@ class Party:
                 "char": char,
                 "party_name": party[1],
                 "admin": admin}
+
+            print party_user
 
             try:
                 mongo = MongoDB()

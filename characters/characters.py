@@ -140,7 +140,7 @@ class Characters:
         :return:
         """
         charachter = {"char_name": char_name}
-
+        print charachter
         try:
             mongo = MongoDB()
             db = mongo.get_manaworld_database()
