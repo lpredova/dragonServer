@@ -37,15 +37,12 @@ class Party:
         Constructor in which we set default paths for local athena.txt and char.txt and servers char txt file
 
         """
-        os.chdir("/root/dragon_foi/parties")
+        os.chdir("/home/lovro/scripts/parties")
 
         self.party_text_file = os.path.join(os.getcwd(), self.party_text_file)
         self.party_saved = os.path.join(os.getcwd(), self.party_saved)
 
-        # PLACE HERE PATH TO PARTIES FILE ON SERVER
-        #self.party_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.party_new)
-
-        #PATH ON SERVER /root/tmwAthena/tmwa-server-data/world/save
+        # PATH ON SERVER /usr/games/tmw/tmwa-server-data/world/save/party.txt
         self.party_new = os.path.join("/root/tmwAthena/tmwa-server-data/world/save", self.party_new)
 
     def check_hash(self):

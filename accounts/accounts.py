@@ -4,6 +4,7 @@ __author__ = 'lovro'
 
 import os.path
 import sys
+
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
 
 import shutil
@@ -36,18 +37,14 @@ class Accounts:
         Constructor in which we set default paths for local saved_users.txt and accounts.txt and servers txt file
 
         """
-        #in order for cwd to work from anyshere we must do this
-        os.chdir("/root/dragon_foi/accounts")
+        # in order for cwd to work from anyshere we must do this
+        os.chdir("/home/lovro/scripts/accounts")
 
         self.accounts_text_file = os.path.join(os.getcwd(), self.accounts_text_file)
         self.accounts_saved = os.path.join(os.getcwd(), self.accounts_saved)
 
-
-        # PLACE HERE PATH TO ACCOUNTS FILE ON SERVER
-        #self.accounts_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.accounts_new)
-        #PATH ON SERVER /root/tmwAthena/tmwa-server-data/login/save
-        self.accounts_new = os.path.join("/root/tmwAthena/tmwa-server-data/login/save", self.accounts_new)
-
+        # PATH ON SERVER /usr/games/tmw/tmwa-server-data/login/save
+        self.accounts_new = os.path.join("/usr/games/tmw/tmwa-server-data/login/save", self.accounts_new)
 
     def check_hash(self):
         """

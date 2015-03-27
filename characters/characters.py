@@ -38,18 +38,14 @@ class Characters:
         Constructor in which we set default paths for local athena.txt and char.txt and servers char txt file
 
         """
-        os.chdir("/root/dragon_foi/characters")
+        os.chdir("/home/lovro/scripts/characters")
 
 
         self.chars_text_file = os.path.join(os.getcwd(), self.chars_text_file)
         self.chars_saved = os.path.join(os.getcwd(), self.chars_saved)
 
-
-        # THIS PATH WILL BE REPLACED WITH ORIGINAL CHARACHTERS FILE
-        #self.chars_new = os.path.join("/Users/lovro/coding/Python/MWlogScrapper/test_data", self.chars_new)
-
-        #PATH ON SERVER /root/tmwAthena/tmwa-server-data/world/save
-        self.chars_new = os.path.join("/root/tmwAthena/tmwa-server-data/world/save", self.chars_new)
+        #PATH ON SERVER /usr/games/tmw/tmwa-server-data/world/save
+        self.chars_new = os.path.join("/usr/games/tmw/tmwa-server-data/world/save", self.chars_new)
 
 
     def check_hash(self):
