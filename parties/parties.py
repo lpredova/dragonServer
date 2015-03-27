@@ -234,6 +234,7 @@ if __name__ == '__main__':
     party = Party()
     if not party.check_hash():
         party.get_new_users()
+        print "Added new party..."
 
     else:
         print "Nothing to do here..."

@@ -40,11 +40,10 @@ class Characters:
         """
         os.chdir("/home/lovro/scripts/characters")
 
-
         self.chars_text_file = os.path.join(os.getcwd(), self.chars_text_file)
         self.chars_saved = os.path.join(os.getcwd(), self.chars_saved)
 
-        #PATH ON SERVER /usr/games/tmw/tmwa-server-data/world/save
+        # PATH ON SERVER /usr/games/tmw/tmwa-server-data/world/save
         self.chars_new = os.path.join("/usr/games/tmw/tmwa-server-data/world/save", self.chars_new)
 
 
@@ -62,13 +61,6 @@ class Characters:
                 return True
         else:
             print "Sorry specified file doesn't exist"
-
-
-    def get_accounts_from_server(self):
-        """
-        This method should get location of original servers data about user accounts
-        """
-        # Todo this method to work on server
 
 
     def check_file_exists(self, file_path):
@@ -147,8 +139,8 @@ class Characters:
         :param user_id:
         :return:
         """
-        charachter = {"char_name": char_name,
-                      "quest_info": quest_info}
+        charachter = {"char_name": char_name}
+
         try:
             mongo = MongoDB()
             db = mongo.get_manaworld_database()
@@ -180,6 +172,7 @@ if __name__ == '__main__':
     charachters = Characters()
     if not charachters.check_hash():
         charachters.get_new_users()
+        print "Added new charachter..."
 
     else:
         print "Nothing to do here..."
