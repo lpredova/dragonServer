@@ -54,17 +54,12 @@ class Accounts:
         if self.check_file_exists(self.accounts_new) and self.check_file_exists(self.accounts_saved):
             hash_ = Hash()
             if not hash_.check_file_hash(self.accounts_new, self.accounts_saved):
+                print "fileExits"
                 return False
             else:
                 return True
         else:
             print "Sorry specified file doesn't exist"
-
-    def get_accounts_from_server(self):
-        """
-        This method should get location of original servers data about user accounts
-        """
-        # Todo this method to work on server
 
     def check_file_exists(self, file_path):
         """
@@ -81,6 +76,7 @@ class Accounts:
         """
         Method that reads users data from servers original user accounts file
         """
+
         f = open(self.accounts_new, 'r')
         for line in f:
             self.parse_user(line)
@@ -92,19 +88,20 @@ class Accounts:
         saved_users.txt
         :rtype : object
         """
-
-        # Skipping comments
-        if line[0] == "/":
-            return 0
-        else:
-            user = line.split("\t")
-
-            # Skipping reserved value for new user
-            if user[1][0] == "%":
+        try:
+            if line[0] == "/":
                 return 0
+            else:
+                user = line.split("\t")
 
-            if not self.find_user(user[1]):
-                self.save_user(user[1], user[0], user[3], user[4], user[7])
+                # Skipping reserved value for new user
+                if user[1][0] == "%":
+                    return 0
+
+                if not self.find_user(user[1]):
+                    self.save_user(user[1], user[0], user[3], user[4], user[7])
+        except:
+            print "error parse_user"
 
 
     def find_user(self, user):
@@ -112,14 +109,18 @@ class Accounts:
         Method that searches user in local saved_users.txt file and returns true if it is find
         :rtype : Boolean
         """
-        searchfile = open(self.accounts_text_file, "r")
-        for line in searchfile:
-            if user in line:
-                searchfile.close()
-                return True
+        try:
+            searchfile = open(self.accounts_text_file, "r")
+            for line in searchfile:
+                if user in line:
+                    searchfile.close()
+                    return True
 
-        searchfile.close()
-        return False
+            searchfile.close()
+            return False
+
+        except Exception:
+            return False
 
     def save_user(self, user, user_id, date_registrated, gender, email):
         """
@@ -127,7 +128,6 @@ class Accounts:
         :param user:
         :param user_id:
         """
-
         if self.save_user_database(user, user_id, date_registrated, gender, email):
             self.save_user_text(user)
             self.replace_local_accounts_file()
@@ -144,12 +144,15 @@ class Accounts:
                    "gender": gender,
                    "email": email,
                    "date_registrated": date_registrated}
+        print account
+
         try:
             mongo = MongoDB()
             mana_db = mongo.get_manaworld_database()
             acc_id = mana_db.ManaWorldDB.insert(account)
             return True
-        except:
+        except Exception, e:
+            print e
             return False
 
     def save_user_text(self, user):
@@ -171,6 +174,6 @@ if __name__ == '__main__':
     accounts = Accounts()
     if not accounts.check_hash():
         accounts.get_new_users()
-
+        print "Added new account..."
     else:
         print "Nothing to do here..."
